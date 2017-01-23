@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Project A </title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body onload="main()">
+    <p1> <b>"Dancing Robot" by David Wallach</b></p1>
+    <br> </br>
+    <canvas id="webgl" width="500" height="600">
+    Please use a browser that supports "canvas"
+    </canvas>
+    <div>
+      <i>This is your control panel. Make this robot do the robot dance!</i>
+      <br></br>
+      <button class="button" id="robotButton">Do the Robot</button>
+      <button class="button" id="freezeButton">Freeze</button>
+      <p> press the "h" key for instructions on how to use this program (they will appear directly under this message) </p>
+      <div id="instructions" style="display:none;">
+      <p>To further interact with this project, you can:  <br>
+            1. use the right arrow key to increase the rotation angle <br>
+            2. use the left arrow key to decrease the rotation angle <br>
+            3. press space bar to make his feet appear or disappear <br>
+            4. drag the hexagonal figure around with your mouse <br>
+            5. toggle the "Do the robot button" to enable the robot to do the robot dance <br>
+            6. toggle the "freeze" button to make the animations hault or continue <br>
+            7. click the canvas to change the color of the background <br>
+            8. press the "a" key to make a secret shape roam the sceen <br>
+            9. once the "a" key has been pressed, you can press the "s" key to make it disappear <br>
+      </p>
+      </div>
+
+    </div>
+    
+    <script src="lib/webgl-utils.js"></script>
+    <script src="lib/webgl-debug.js"></script>
+    <script src="lib/cuon-utils.js"></script>
+    <script src="lib/cuon-matrix.js"></script>
+    <script src="lib/cuon-matrix-mod.js"></script>
+    <script src="ProjA.js"></script>
+  </body>
+</html>
