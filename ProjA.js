@@ -81,10 +81,6 @@ function main() {
   var modelMatrix = new Matrix4();
   var currentAngle = 0.0;
 
-  // Register the Mouse & Keyboard Event-handlers-------------------------------
-  // If users move, click or drag the mouse, or they press any keys on the 
-  // the operating system will sense them immediately as 'events'.  
-  //
   // First, register all mouse events found within our HTML-5 canvas:
   canvas.onmousedown  = function(ev){myMouseDown( ev, gl, canvas, n, currentAngle, modelMatrix, u_ModelMatrix) }; 
   
@@ -127,10 +123,6 @@ function main() {
 
   setClearColor(gl);
   gl.clearColor(0.75, 0.85, 0.8, 1.0);
-  
-
-     
-
 
   var tick = function() {
 
@@ -591,9 +583,7 @@ function drawRobotArms(gl, n, currentAngle, modelMatrix, u_ModelMatrix) {
 
   gl.uniformMatrix4fv(u_ModelMatrix, false, modelMatrix.elements);
   gl.drawArrays(gl.TRIANGLES, offset, n);
-
-
-  //
+	
   //
   //
   /****** Draw left arm *********/
@@ -657,14 +647,6 @@ function drawHex(gl, n, currentAngle, modelMatrix, u_ModelMatrix) {
 function drawPyramid(gl, n, currentAngle, modelMatrix, u_ModelMatrix) {
   var offset = 132;
   var n = 3;
-
-    // modelMatrix.setTranslate(0.45, 0.3, 0.0);  
-    // modelMatrix.scale(0.1, 0.1, 0.1);
-    // if(!freeze)
-    //   modelMatrix.rotate(currentAngle, 1, 1, 0);  
-    // gl.uniformMatrix4fv(u_ModelMatrix, false, modelMatrix.elements);
-    // gl.drawArrays(gl.TRIANGLES, offset, n);
-
     modelMatrix.setTranslate(0.45, 0.3, 0.0);  
     modelMatrix.scale(0.0001, 0.0001, 0.0001);
     if(!freeze)
@@ -741,16 +723,13 @@ function animate(angle) {
 }
 
 function myMouseDown(ev, gl, canvas, n, currentAngle, modelMatrix, u_ModelMatrix) {
-// Called when user PRESSES down any mouse button;
-//                  (Which button?    console.log('ev.button='+ev.button);   )
-//    ev.clientX, ev.clientY == mouse pointer location, but measured in webpage 
-//    pixels: left-handed coords; UPPER left origin; Y increases DOWNWARDS (!)  
+
 
 // Create right-handed 'pixel' coords with origin at WebGL canvas LOWER left;
   var rect = ev.target.getBoundingClientRect(); // get canvas corners in pixels
   var xp = ev.clientX - rect.left;                  // x==0 at canvas left edge
   var yp = canvas.height - (ev.clientY - rect.top); // y==0 at canvas bottom edge
-//  console.log('myMouseDown(pixel coords): xp,yp=\t',xp,',\t',yp);
+
   
   // Convert to Canonical View Volume (CVV) coordinates too:
   var x = (xp - canvas.width/2)  /    // move origin to center of canvas and
@@ -774,10 +753,6 @@ function myMouseDown(ev, gl, canvas, n, currentAngle, modelMatrix, u_ModelMatrix
 
 
 function myMouseMove(ev, gl, canvas) {
-// Called when user MOVES the mouse with a button already pressed down.
-//                  (Which button?   console.log('ev.button='+ev.button);    )
-//    ev.clientX, ev.clientY == mouse pointer location, but measured in webpage 
-//    pixels: left-handed coords; UPPER left origin; Y increases DOWNWARDS (!)  
 
   if(isDrag==false) return;       // IGNORE all mouse-moves except 'dragging'
 
@@ -802,10 +777,6 @@ function myMouseMove(ev, gl, canvas) {
 };
 
 function myMouseUp(ev, gl, canvas) {
-// Called when user RELEASES mouse button pressed previously.
-//                  (Which button?   console.log('ev.button='+ev.button);    )
-//    ev.clientX, ev.clientY == mouse pointer location, but measured in webpage 
-//    pixels: left-handed coords; UPPER left origin; Y increases DOWNWARDS (!)  
 
 // Create right-handed 'pixel' coords with origin at WebGL canvas LOWER left;
   var rect = ev.target.getBoundingClientRect(); // get canvas corners in pixels
@@ -866,8 +837,6 @@ function myKeyUp(ev) {
 }
 
 function myKeyPress(ev) {
-// Best for capturing alphanumeric keys and key-combinations such as 
-// CTRL-C, alt-F, SHIFT-4, etc.
   console.log('myKeyPress():keyCode='+ev.keyCode  +', charCode=' +ev.charCode+
                         ', shift='    +ev.shiftKey + ', ctrl='    +ev.ctrlKey +
                         ', altKey='   +ev.altKey   +
